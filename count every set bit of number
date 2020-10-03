@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// first method
+
+int countSetbits(int n) {
+	int count = 0;
+	while (n) {
+		count = count + (n & 1);
+		n >>= 1;
+	}
+	return count;
+}
+
+// second method
+// brain karnighan's way    much faster
+//time complexity o(Log2)
+
+int brain(int n) {
+	int count = 0;
+	for (count = 0; n ; count++) {
+		n &= n - 1;
+	}
+	return count;
+}
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+		int n;
+		int count = 0;
+		cin >> n;
+		cout << "First method to printed" << " ";
+		cout << countSetbits(n) << endl;
+		cout << "Second method to printed" << " " << brain(n) << endl;
+	}
+	return 0;
+}

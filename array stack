@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+#define N 5
+int stack[N];
+int top=-1;
+void push()
+{
+	int x;
+	cout<<" enter tha element"<<endl;
+	cin>>x;
+	if(top==N-1)
+	cout<<"overflow\n";
+	else
+	{
+		top++;
+		stack[top]=x;
+	}
+}
+void pop()
+{
+	int item;
+	if(top==-1)
+	cout<<"Underflow"<<endl;
+	else
+	{
+		item=stack[top];
+		top--;
+		cout<<"pop item="<<item<<endl;
+	}
+}
+void peek()
+{
+	if(top==-1)
+	cout<<"Underflow"<<endl;
+	else
+	{
+		cout<<"top element="<<stack[top]<<endl;
+	}
+}
+void dis()
+{
+	int i;
+	for(int i=top;i>=0;i--)
+	cout<<stack[i]<<" ";
+	cout<<endl;
+}
+int main()
+{
+	int ch;
+	while(1)
+	{
+	cout<<"1 enter tha push element\n\n";
+	cout<<"2 enter tha pop element\n\n ";
+	cout<<"3 enter tha peek element\n\n";
+	cout<<"4 enter tha disply element\n\n";
+	cin>>ch;
+	switch(ch)
+	{
+		case 1:push();
+		break;
+		case 2:
+			pop();
+			break;
+			case 3:
+				peek();
+				break;
+				case 4:
+					dis();
+					break;
+					case 5:
+						exit(0);
+					default:
+						cout<<"invalid item\n\n";
+						
+	}
+}
+}

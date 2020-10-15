@@ -24,3 +24,20 @@ int main(void)
                  : cout<<"Element is present at index " <<result; 
    return 0; 
 } 
+
+
+
+### code by manpreet using python.
+def linear_search(li,h):
+   for i in range(len(li)):
+       for x in li:
+           if h==li[i]:
+              print(i," ",li[i])
+       return -1
+               
+                
+li=[int(x) for x in input().split()]
+h=int(input())
+result=linear_search(li,h)
+print(result)                
+                

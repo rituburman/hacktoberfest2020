@@ -1,0 +1,29 @@
+#basic implementation of rock, paper, scissors game
+from random import randint
+l = ["Rock", "Paper", "Scissors"]
+computer = l[randint(0, 2)]
+player = False
+while not player:
+    player = input("Rock, Paper, Scissors?")        # As soon as you take your turn, your status changes from False to True
+                                                    # because any value assigned to the variable player makes player
+    if player == computer:
+        print("Tie!")
+    elif player == "Rock":
+        if computer == "Paper":
+            print("You lose!", computer, "covers", player)
+        else:
+            print("You win!", player, "smashes", computer)
+    elif player == "Paper":
+        if computer == "Scissors":
+            print("You lose!", computer, "cut", player)
+        else:
+            print("You win!", player, "covers", computer)
+    elif player == "Scissors":
+        if computer == "Paper":
+            print("You lose!", computer, "smashes", player)
+        else:
+            print("You win!", player, "cut", computer)
+    else:
+        print("This is not a valid play!")
+        player = False
+        computer = l[randint(0, 2)]

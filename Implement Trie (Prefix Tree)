@@ -1,0 +1,116 @@
+static int x = []()->int {ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr); return 0;}();
+
+class TrieNode{
+    char alphabet;
+    map<char, TrieNode*>children;
+    bool isLastInWord;
+    
+    public:
+
+        TrieNode(char letter){
+            isLastInWord = false; 
+            alphabet = letter;
+        }
+
+        bool ifInChildren(char letter){
+            if(children.find(letter) != children.end()){
+                return true;
+            }
+            return false;
+        }
+    
+        TrieNode* getChildNode(char letter){
+            if(children.find(letter) != children.end()){
+                return children[letter];
+            }
+            return nullptr;
+        }
+
+        void setAsChild(TrieNode* child){
+            children[child->getAlphabet()] = child;
+        }
+
+        char getAlphabet(){
+            return alphabet;
+        }
+
+        void setAlphabet(char letter){
+             alphabet = letter;
+        }
+
+        bool getIfLastNodeInWord(){
+            return isLastInWord;
+        }
+
+        void setLastNodeInWord(bool val){
+            isLastInWord = val;
+        }
+};
+
+
+class Trie {
+    TrieNode* root;
+public:
+    /** Initialize your data structure here. */
+    Trie() {
+        root = new TrieNode('#');
+    }
+    
+    /** Inserts a word into the trie. */
+    void insert(string word) {
+       auto parentNode = root;
+        if(!parentNode){
+            cout<<"Null ptr";
+            return;
+        }
+        for(int i = 0; i< word.size(); i++){
+           if(parentNode->ifInChildren(word[i])){
+               parentNode = parentNode->getChildNode(word[i]);
+               continue;    
+           }
+           TrieNode* childNode = new TrieNode(word[i]);
+           parentNode->setAsChild(childNode);
+           
+           parentNode = childNode;
+           
+       }
+       parentNode->setLastNodeInWord(true);
+    }
+    
+    /** Returns if the word is in the trie. */
+    bool search(string word) {
+        auto parentNode = root;
+        for(int i = 0; i< word.size(); i++){
+            if(parentNode->ifInChildren(word[i])){
+                parentNode = parentNode->getChildNode(word[i]);
+                continue;    
+            }else{
+                return false;
+            }
+        }
+        if(parentNode->getIfLastNodeInWord()) return true;
+        return false;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(string prefix) {
+        auto parentNode = root;
+        for(int i = 0; i< prefix.size(); i++){
+            if(parentNode->ifInChildren(prefix[i])){
+                parentNode = parentNode->getChildNode(prefix[i]);
+                continue;    
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */

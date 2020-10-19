@@ -1,0 +1,97 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Codec {
+public:
+    
+    // Pre-order traversal for serialization
+    void preorderTraversal(TreeNode* root, string &list){
+        if(root == nullptr) return;
+        
+        list += to_string(root->val);
+        list += ':';
+        preorderTraversal(root->left, list);
+        preorderTraversal(root->right, list);
+    }
+
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        string list;
+        preorderTraversal(root, list);
+        cout<<list;
+        return list;
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        if(data == "") return nullptr;
+        string number;
+        vector<string>numbers;
+        for(int i = 0; i< data.size(); i++){
+            if(data[i] != ':'){
+                number += data[i];
+            }else{
+                numbers.push_back(number);
+                number.clear();
+            }
+        }
+        
+        TreeNode* root = nullptr;
+        stringstream valueInString(numbers[0]);
+        // int val = stoi(numbers[0]);
+        int value  = 0;
+        valueInString >> value;
+        root = new TreeNode(value);
+        
+        for(int j = 1; j < numbers.size(); j++){
+            insertInBST(root, numbers[j]);
+        }
+        return root;
+       
+    }
+    
+    // Insertion in a BST
+    void insertInBST(TreeNode* root, string num){
+        if(root == nullptr) return;
+        
+        stringstream valueInString(num);
+        int value = 0;
+        valueInString>>value;
+        
+        TreeNode* newNode = new TreeNode(value);
+        TreeNode* temp = root;
+        
+        while(temp){
+            if(value < temp->val){
+                if (temp ->left != nullptr) {
+                    temp = temp->left;
+                }else{
+                    temp -> left = newNode;
+                    return;
+                }
+            } else{
+                 if (temp ->right != nullptr) {
+                    temp = temp->right;
+                }else{
+                    temp -> right = newNode;
+                    return;
+                }
+            }
+        }
+    }
+    
+    
+};
+
+// Your Codec object will be instantiated and called as such:
+// Codec* ser = new Codec();
+// Codec* deser = new Codec();
+// string tree = ser->serialize(root);
+// TreeNode* ans = deser->deserialize(tree);
+// return ans;

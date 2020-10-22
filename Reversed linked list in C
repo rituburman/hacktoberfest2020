@@ -1,0 +1,317 @@
+include<stdio.h>
+
+struct node *createNode();
+
+void insertNode();
+
+deleteNode();
+
+lastNodeDelete();
+
+insert_a_node();
+
+struct node
+
+{
+
+  int info;
+
+  struct node *link;
+
+};
+
+struct node *start=NULL;
+
+struct node *createNode()
+
+{
+
+  struct node *n;
+
+  n=(struct node *) malloc(sizeof(struct node));
+
+  return (n);
+
+}
+
+void insertNode()
+
+{
+
+  struct node *temp;
+
+  struct node *t;
+
+  temp=createNode();
+
+  printf(" Enter a number :");
+
+  scanf("%d",&temp->info);
+
+  temp->link=NULL;
+
+  if(start==NULL)
+
+    start=temp;
+
+  else{
+
+     t=start;
+
+     while(t->link!=NULL)
+
+       t=t->link;
+
+     t->link=temp;
+
+   }
+
+}
+
+insert_a_node()
+
+{
+
+  struct node *t;
+
+  struct node *temp;
+
+  temp=createNode();
+
+  printf(" Enter a number :");
+
+  scanf("%d",&temp->info);
+
+  if(start==NULL)
+
+    t=start;
+
+  else
+
+   {
+
+    t=start->link;
+
+    temp->link=t->link;
+
+    t->link=temp;
+
+    }
+
+}
+
+deleteNode()
+
+{
+
+ struct node *r;
+
+ if(start==NULL)
+
+   r=start;
+
+ else{
+
+   r=start->link;
+
+   start->link=r->link;
+
+ }
+
+}
+
+lastNodeDelete()
+
+{
+
+  struct node *p;
+
+  struct node *t;
+
+  if(start==NULL)
+
+    p=start;
+
+  else
+
+  {
+
+    p=start;
+
+    while(p->link!=NULL)
+
+     {
+
+      t=p;
+
+      p=p->link;
+
+     }
+
+    free(t->link);
+
+    t->link=NULL;
+
+   }
+
+}
+
+void viewlist()
+
+{
+
+  struct node *t;
+
+  if(start==NULL)
+
+    printf("\n list is empty");
+
+  else{
+
+     printf("\n Viewing list\n");
+
+     t=start;
+
+     while(t!=NULL)
+
+     {
+
+      printf("%d\n",t->info);
+
+      t=t->link;
+
+     }  
+
+   }
+
+}
+
+void reverselist()
+
+{
+
+ struct node *t,*t1;
+
+ t=t1=NULL;
+
+ printf("\n Reversed linked list\n");
+
+ while(start!=NULL)
+
+ {
+
+   t1=start->link;
+
+   start->link=t;
+
+   t=start;
+
+   start=t1;
+
+ } 
+
+ while(t!=NULL){
+
+  printf("\n%d",t->info);
+
+  t=t->link;
+
+ } 
+
+}
+
+int menu()
+
+{
+
+ printf("\n1.add value to the list");
+
+ printf("\n2.view list");
+
+ printf("\n3.delete node from a   particular position ");
+
+ printf("\n4.delete last node");
+
+ printf("\n5.insert a node to a particular position");
+
+ printf("\n6. reverse node");
+
+ printf("\n7. exit");
+
+}
+
+int main()
+
+{
+
+ int choice;
+
+ menu();
+
+ while(1){
+
+ printf("\n enter your choice :");
+
+ scanf("%d",&choice);
+
+ // clrscr();
+
+  switch(choice)
+
+  {
+
+  case 1:
+
+    insertNode(); 
+
+    break;
+
+  case 2:
+
+     viewlist();
+
+     reverselist();
+
+     break;
+
+   case 3:
+
+      deleteNode();
+
+       break;
+
+   case 4:
+
+       lastNodeDelete();
+
+       break;
+
+   case 5: 
+
+       insert_a_node();
+
+       break;
+
+   //case 6:
+
+       //reverselist();
+
+       break;
+
+   case 7:
+
+       exit(0);
+
+  default:
+
+     printf("invalid choice");
+
+  }
+
+ }
+
+  return 0;
+
+}
+
+    

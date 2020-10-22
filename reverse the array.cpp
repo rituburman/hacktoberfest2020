@@ -20,3 +20,15 @@ int main()
 	cout<<arr[i]<<endl;
 	return 0;
 }
+
+//code by manpreet using python
+def reverse_list(li):
+  length=len(li)
+  for i in range(length//2):
+    li[i],li[length-i-1]=li[length-i-1],li[i]
+  return li
+
+li=[int(x) for x in input().split()]
+reverse_list(li)
+print(li) 
+//python language

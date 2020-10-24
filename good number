@@ -1,0 +1,48 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long n;
+        cin>>n;
+        long long leftsum=0,rightsum=0,flag=0;
+
+        for(int i=1;i<=n;i++)
+        {
+            leftsum=leftsum+i;
+          for(int j=i+1;j<=n;j++)
+          {
+             rightsum=rightsum+j;
+          }
+
+
+            if(leftsum==rightsum)
+            {
+                flag++;
+                break;
+            }
+
+            rightsum=0;
+        }
+
+        if(flag==1)
+        {
+            cout<<1<<endl;
+        }
+        else
+        {
+            cout<<0<<endl;
+        }
+
+    }
+}

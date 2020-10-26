@@ -1,0 +1,30 @@
+import java.util.Scanner;
+class StrToBinary
+{
+public static void main(String[] args)
+{
+    Scanner dtpe = new Scanner(System.in);
+    System.out.println("Enter a String");
+    String  a = dtpe.nextLine();
+int binary[] = new int[1000];
+int l=a.length();
+for (int x=0; x<l; x++)
+{
+    int ch = (int)a.charAt(x);
+    if(ch!= 32)
+    { int c=0;
+        while(ch>0)
+        {
+            int d= ch%2;
+            binary[c] = d;
+            ch=(int)ch/2; c++;
+        }
+
+        for(int y=c-1; y>=0; y--)
+        System.out.print(binary[y] + " ");
+    }
+    else
+    System.out.print("  ");
+}
+
+}}

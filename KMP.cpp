@@ -50,7 +50,7 @@ int main(){
     string text = "ABCDDBCEFGHIJJKLLMNOPQQRSTUVWXXXYZZ";
     string tofind = "BCDD";
     if(kmpsearch(tofind,text)){
-        cout<<"Found "<<tofind<<" in "<<text<<endl; 
+        cout<<"Found "<<tofind<<" in "<<text<<endl;
     }
     else{
         cout<<"Not found "<<tofind<<" in "<<text<<endl;

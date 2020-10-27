@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/trapping-rain-water/
 // Dificulty level - Hard
 
-
+// Approach to solve - using 2 pointer method.
 class Solution {
 public:
     int trap(vector<int>& height) {

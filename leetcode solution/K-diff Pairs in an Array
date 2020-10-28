@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        int res = 0;
+        unordered_map<int,pair<int,bool>> present;
+        for(int i = nums.size()-1; i >= 0; --i) {
+            //first element, repetition = false
+            if( present.find( nums[i] ) == present.end())
+                present[ nums[i] ] = {i,false};
+            //already had this element, repetition = true
+            else 
+                present[ nums[i] ] = {i,true};
+        }
+        for(auto valIdx : present) {
+            const int &currVal = valIdx.first;
+            const int &currValIdx = valIdx.second.first;
+            bool isRepeated = valIdx.second.second;
+                
+            //'a' is present for which 'b'-'a' == 'k'
+            if( ( present.find( currVal + k) != present.end() ) && 
+               //i != j  or there are multiple occurences of this element 'a'
+                ( (present[ currVal + k ].first != currValIdx) || (isRepeated) ) )
+                ++res;
+        }
+        return res;
+    }
+};

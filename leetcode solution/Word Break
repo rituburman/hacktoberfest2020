@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        vector<bool> dp(s.size()+1, false);
+        unordered_set<string> setStr(wordDict.begin(), wordDict.end());
+        //empty string can be created even if not present in set
+        dp[0] = true;
+        
+        for(int i = 0; i <= s.size(); ++i) {
+            for(int j = i-1; j >= 0; --j) {
+                if( dp[j] && ( setStr.find( s.substr(j, i-j) ) != setStr.end() ) ) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.size()];
+    }
+};

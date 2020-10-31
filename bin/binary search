@@ -1,0 +1,20 @@
+a=list(map(int,input("enter array").split()))
+a.sort()
+print(a)
+n=int(input("enter element"))
+low=0
+flag=0
+high=len(a)-1
+while(low<=high):
+ mid=(low+high)//2
+ if(a[mid]==n):
+  print("found at index",mid)
+  flag=1
+  break
+ elif(a[mid]<n):
+  low=mid+1
+ elif(a[mid]>n):
+  high=mid-1
+ 
+if(flag!=1):
+ print("cant find")

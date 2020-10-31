@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style type="text/css">
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: black;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 40vw;
+			background-color: #2a2626;
+		}
+
+		.button {
+			width: 70px;
+			height: 70px;
+			margin: 10px;
+			font-size: 2em;
+		}
+
+		.clear {
+			background-color: #f75c17;
+			color: white;
+			border: 1px solid #f75c17;
+		}
+
+		.container1 {
+			height: 70px;
+			width: 340px;
+			margin-top: 20px;
+			background-color: black;
+		}
+
+		.container2 {
+			display: grid;
+			grid-template-columns: repeat(4, auto);
+		}
+
+		.box2 {
+			display: grid;
+			grid-template-columns: repeat(3, auto);
+			grid-template-rows: 1;
+		}
+
+		.container3 {
+			display: flex;
+		}
+
+		.equal {
+			height: 340px;
+			background-color: #5a5ae2;
+			border: 1px solid #5a5ae2;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="container1">
+
+		</div>
+		<div class="container2">
+			<button class="button">+</button>
+			<button class="button">-</button>
+			<button class="button">*</button>
+			<button class="button">/</button>
+		</div>
+		<div class="container3">
+			<div class="box2">
+				<button class="button">7</button>
+				<button class="button">8</button>
+				<button class="button">9</button>
+				<button class="button">4</button>
+				<button class="button">5</button>
+				<button class="button">6</button>
+				<button class="button">1</button>
+				<button class="button">2</button>
+				<button class="button">3</button>
+				<button class="button">0</button>
+				<button class="button">.</button>
+				<button class="clear button">AC</button>
+			</div>
+			<div class="box3">
+				<button class="equal button">=</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

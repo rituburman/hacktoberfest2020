@@ -1,0 +1,48 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+// g++ hello.cpp && ./a.out
+using namespace std;
+
+class node {
+public:
+	int data;
+	node*next;
+
+	node(int d) {
+		data = d;
+		next = NULL;
+	}
+};
+
+class linkedList {
+public:
+	node*head;
+	linkedList() {
+		head = NULL;
+	}
+
+	void insertHead(int d) {
+		node*nn = new node(d);
+		nn->next = head;
+		head = nn;
+	}
+	void print() {
+		node*temp = head;
+		while(temp != NULL) {
+			cout << temp->data;
+			temp = temp->next;
+		}
+	}
+};
+
+int main () {
+
+ linkedList LL;
+ LL.insertHead(1);
+ LL.insertHead(1);
+ LL.insertHead(1);
+ LL.insertHead(1);
+ LL.print();
+	return 0;
+}

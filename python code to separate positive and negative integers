@@ -1,0 +1,24 @@
+#program to create a text file containing integer numbers then separate positive and negative number
+#into separate file using file handling
+f=open("numbers.csv","w")
+for i in range(8):
+    x=int((input("enter the numbers"))
+f=open("numbers.csv",'r')
+f1=open("positive.csv",'w')
+f2=open("negative.csv",'w')
+fread=f.read().split(",")
+fread().pop()
+print(fread)
+for i in fread:
+            y=int(i)
+            if y>=0:
+                f1.write(str(y)+",")
+            else:
+                f2.write(str(y)+",")
+f1.close()
+f2.close()
+f1=open("positive.csv",'r')
+f2=open("negative.csv",'r')
+print(f1.read())
+print(f2.read())
+            

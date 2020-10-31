@@ -1,0 +1,30 @@
+import java.util.*;
+class OrgWrd_Comb
+{
+    public static void main ()
+    {
+        String str;
+        int i,j,k,p;
+        Scanner in=new Scanner(System.in);
+        System.out.println("ENTER WORD");
+        str=in.next();   //input taken
+        str=str.toUpperCase();   // converted the word in upper case
+        p=str.length();      // storing length of the word 
+        System.out.println("The required combinations of the word:");
+        for(i=0;i<p;i++)
+        {
+           for(j=0;j<p;j++)
+            {   
+              for(k=0;k<p;k++)
+                {
+                    if(i!=j && j!=k && k!=i)
+                    {
+                    System.out.print(str.charAt(i)+""+str.charAt(j)+""+str.charAt(k));        
+                }
+            }
+                System.out.println();
+            }
+        }
+    }
+}                 
+                    

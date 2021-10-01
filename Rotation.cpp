@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+using namespace std;
 void rotateLeft(int arr[], int size){ 
    int temp=arr[0];
    for(int i=1,i<size;i++){

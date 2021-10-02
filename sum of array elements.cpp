@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main(){
+int main(){//main method
   int size;
   cin>>size;
   int arr[size];

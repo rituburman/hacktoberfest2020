@@ -12,9 +12,6 @@ vector<int> solve(int arr[],int size,int target){
     }
   }
 
-    
-
-
 int main(){
   int size;
   cin>>size;

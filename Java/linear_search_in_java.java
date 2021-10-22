@@ -13,7 +13,7 @@ class linearsearch{
 		System.out.print("Enter the the size of array:");
 		int n=sc.nextInt();
 		int a[]=new int[n];
-		for(int i=0;i<n;i++){
+		for(int i=0;i<n;i+=1){
 			System.out.print("Enter the value at index "+i+":");
 			a[i]=sc.nextInt();
 		}

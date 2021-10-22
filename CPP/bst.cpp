@@ -7,7 +7,7 @@ typedef struct tree
 	struct tree* right;
 	struct tree* left;
 
-}tree;
+}treesh;
 
 tree* newnode(int data)
 {

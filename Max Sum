@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int max_sum(int A[],int N);
+
+int main()
+{
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        int N;
+        cin>>N;
+        int A[N];
+        for(int i=0;i<N;i++)
+        {
+            cin>>A[i];
+        }
+
+        cout<<max_sum(A,N)<<endl;
+        /*keeping track of the total sum of the array*/
+
+    }
+}
+// } Driver Code Ends
+
+
+
+int max_sum(int A[],int N)
+{
+    long long currsum=0, cumsum=0;
+    long long maxval=0, temp;
+		for(long long i = 0; i<N; i++){
+		    cumsum +=A[i];
+		}
+		    for(long long i = 0; i<N; i++){
+		    currsum += A[i]*i;
+		    maxval = currsum;
+		    
+		}
+		    
+		    for(long long i = 1; i<N; i++){	   
+			temp = currsum - (cumsum - A[i-1]) + A[i-1]*(N-1);
+			currsum =temp;
+			if(maxval<temp)
+			maxval = temp;
+		
+		    	}
+		    	return maxval;
+}
